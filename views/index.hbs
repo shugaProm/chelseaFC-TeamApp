@@ -1,0 +1,97 @@
+<div class="container">
+
+    <div class="row mb-4 container" style="background-color: blue;">
+
+        <div class="display-5" style="color: white;">
+            Chelsea Team app
+        </div>
+
+        <div class="display-3" style="color: white;">
+            welcome to <span style="font-family: Arial, Helvetica, sans-serif;">Stamford Bridge</span>
+        </div>
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+
+            <button class="btn btn-lg btn-success mb-4">
+                + New Player
+            </button>
+
+            <form action="/save-player" method="POST">
+                
+                <div class="form-group">
+                    <label for="firstname" class="firstname">First Name</label>
+                    <input type="text" name="firstname" id="firstname" class="form-control" required value="{{player.firstname}}">    
+                </div>
+
+                <div class="form-group">
+                    <label for="middlename" class="middlename">Middle Name</label>
+                    <input type="text" name="middlename" id="middlename" class="form-control" required value="{{player.middlename}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="lastname" class="lastname">Last Name</label>
+                    <input type="text" name="lastname" id="lastname" class="form-control" required value="{{player.lastname}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="nickname" class="nickname">Nickname</label>
+                    <input type="text" name="nickname" id="nickname" class="form-control" required value="{{player.nickname}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="position" class="positon">Position</label>
+                    <input type="text" name="position" id="position" class="form-control" required value="{{player.position}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="number" class="number">Number</label>
+                    <input type="text" name="number" id="number" class="form-control" required value="{{player.number}}">
+                </div>
+
+                <input type="hidden" name="id" value="{{player.id}}">
+
+                <button class="btn btn-primary">Submit</button>
+                
+            </form>
+
+        </div>
+
+        <div class="col-8">
+
+            <table class="table table-striped">
+                <tr>
+                    <th>S/N</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Nickname</th>
+                    <th>Position</th>
+                    <th>Number</th>
+                    <th>Action</th>
+                </tr>
+
+                {{#each players}}
+                <tr>
+                    <td>{{this.id}}</td>
+                    <td>{{this.firstname}}</td>
+                    <td>{{this.middlename}}</td>
+                    <td>{{this.lastname}}</td>
+                    <td>{{this.nickname}}</td>
+                    <td>{{this.position}}</td>
+                    <td>{{this.number}}</td>
+                    <td>
+                        <a href="/edit-player/{{this.id}}" class="btn btn-success">E</a> | <a href="/delete-player/{{this.id}}" class="btn btn-danger">D</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
